@@ -4,8 +4,9 @@ import time
 # 1. إعدادات واجهة الموقع
 st.set_page_config(page_title="Smart Study Planner", page_icon="📅")
 
-st.markdown("<h1 style='text-align: center; color: #E67E22;'>📅 منظم المذاكرة الذكي 🌟</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>نظم ساعاتك، حدد أهدافك، وضاعف إنتاجيتك</p>", unsafe_allow_html=True)
+# تنسيق العنوان بلون Baby Blue باستخدام كود اللون (#89CFF0)
+st.markdown("<h1 style='text-align: center; color: #89CFF0;'>📅 منظم المذاكرة الذكي 🌟</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #5DADE2;'>نظم ساعاتك، حدد أهدافك، وضاعف إنتاجيتك</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 # 2. إدخال البيانات (الفكرة الأساسية لصاحبك)
@@ -20,6 +21,16 @@ with col_input2:
     level = st.selectbox("مستوى الصعوبة:", ["سهل", "متوسط", "صعب جداً"])
     goal = st.selectbox("هدفك من المذاكرة:", ["مراجعة نهائية", "مذاكرة لأول مرة", "حل امتحانات سابقة"])
 
+# تغيير لون الزرار باستخدام CSS بسيط (اختياري بس بيخلي الشكل أجمد)
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #89CFF0;
+    color: white;
+    border: None;
+}
+</style>""", unsafe_allow_html=True)
+
 if st.button("توليد خطة المذاكرة الذكية"):
     # حركات التحليل والذكاء الاصطناعي
     with st.status("🔍 جاري تحليل البيانات المدخلة...", expanded=True) as status:
@@ -32,7 +43,7 @@ if st.button("توليد خطة المذاكرة الذكية"):
     st.markdown("---")
     
     # 3. النتيجة الثابتة (مثال: خطة مذاكرة ليلة الامتحان)
-    st.header(f"📊 الجدول الزمني المقترح لمادة: {subject if subject else 'الذكاء الاصطناعي'}")
+    st.markdown(f"<h2 style='color: #5DADE2;'>📊 الجدول الزمني المقترح لمادة: {subject if subject else 'الذكاء الاصطناعي'}</h2>", unsafe_allow_html=True)
     
     st.info("📍 **توزيع الوقت المقترح (بناءً على 5 ساعات):**")
     
